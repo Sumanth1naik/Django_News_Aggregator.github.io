@@ -1,0 +1,40 @@
+{% extends 'index.html' %} 
+
+{%block content%}
+<div class="first">
+<h1 style="margin-left:90px ;">Welcome to the news</h1>
+
+
+
+<form method="post" name="searchForm">
+    {%csrf_token%}
+  <label for="gsearch" style="margin-left: 90px;">Search Google:</label>
+  <input type="search" id="gsearch" name="gsearch" >
+  <input type="submit" >
+</form>
+<h1>Trendig News All over the world</h1>
+</div>
+<div>
+
+    {%for title,desc,img,newsurl in mylist%}
+    <div class="parent">
+    <a href="{{newsurl}}" class="clickable-card">
+        <article>
+          <div class="article-wrapper">
+            <figure>
+              <img src="{{img}}" alt=""  />
+            </figure>
+            <div class="article-body">
+              <h2>{{title}}</h2>
+              <p>
+                {{desc}}
+            </p>
+           
+              </div>
+            </div>
+        </article>
+      </a>
+    </div>
+    {%endfor%}
+</div>
+{%endblock%}
